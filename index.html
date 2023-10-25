@@ -15,8 +15,8 @@
 
     <link rel="stylesheet" href="output.css" />
   </head>
-  <body class="bg-blue-500">
-    <script src="main.js"></script>
+  <body class="bg-blue-500" id="music-container">
+    
     <div class="flex justify-between max-w-md mx-auto py-7 font-bold text-slate-200">
       <div>
         <i class="fa-solid fa-chevron-down"></i>
@@ -26,36 +26,38 @@
     </div>
 
     <div class="max-w-md mx-auto">
-      <img class="rounded-xl" src="albumart/Aidan.jpg" alt="">
+      <img class="rounded-xl" src="" alt="" id="cover">
     </div>
 
     <div class="max-w-md mx-auto py-7 font-bold">
-      <p class="text-slate-200 text-2xl">Aiden</p>
-      <p class="text-slate-400">Jonathan Ceaser</p>
+      <p class="text-slate-200 text-2xl" id="title"></p>
+      <p class="text-slate-400" id="artistName"></p>
     </div>
 
     <div class="max-w-md mx-auto">
-      <div class="bg-slate-400 max-w-md mx-auto h-2">
-        <div class="bg-slate-200 h-2 w-1/2 flex justify-start"></div>
+      <div class="bg-slate-400 max-w-md mx-auto h-2" id="progress-container">
+        <div class="bg-slate-200 h-2 w-1/2 flex justify-start" id="progress"></div>
       </div>
 
       <div class="flex justify-between py-2 text-slate-200">
-        <p>0:00</p>
-        <p>2:18</p>
+        <p id="currTime"></p>
+        <p id="durTime"></p>
       </div>
     </div>
 
-    <div class="flex justify-evenly max-w-md mx-auto mb-5">
-      <div>
-        <i class="text-3xl fas fa-step-backward pt-7 text-slate-200"></i>
-      </div>
-      <button class="bg-slate-200 rounded-full">
+    <div class="flex justify-evenly max-w-md mx-auto mb-7">
+      <button id="prev">
+        <i class="text-3xl fas fa-step-backward pt-4 text-slate-200"></i>
+      </button>
+      <button class="bg-slate-200 rounded-full" id="play">
         <i class="text-3xl fas fa-play p-7 px-9"></i>
       </button>
-      <div>
-        <i class="text-3xl fas fa-step-forward pt-7 text-slate-200"></i>
-      </div>
-    </div>
+      <button id="next">
+        <i class="text-3xl fas fa-step-forward pt-4 text-slate-200"></i>
+      </button>
 
+      <audio src="" id="audio"></audio>
+    </div>
+    <script src="main.js"></script>
   </body>
 </html>
