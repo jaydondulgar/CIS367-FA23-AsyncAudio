@@ -16,14 +16,27 @@ const durTime = document.querySelector('#durTime');
 const songs = ["Aidan", 'Autumn Sun', 'Best Part of Me', 'Better Days', "I Can't Make You Love Me", 'Just Relax', 'Paranormal is Real', 'Perfect', 'Polarity', 'Your Shoulder'];
 const artists = ['Jonathan Ceaser', 'Bryce Greene', 'The Dunwells', 'Lakey', 'Bryce Greene', 'Purrple Cat', 'Leonell Cassio', 'Ed Sheeran', 'Ethos', 'Kaitlyn Thompson']
 
+const color1 = ['#3d5375', '#BA5333', '#5178b4', '#b45309', '#C9BEC8', '#D85B7B', '#75663e', '#DEE4EC', '#7197E', '#A463FF']
+const color2 = ['#151d29', '#411d12', '#1c4075', '#3f1d03', '#4b3e4a', '#571526', '#292416', '#3b4d66', '#282a2c', '#34007c']
+
+
 let songIndex = 0;
 let artistIndex = 0;
+
+let firstColorIndex = 0;
+let secondColorIndex = 0;
 
 
 
 // Initially load song details into DOM
 loadSong(songs[songIndex]);
 loadArtist(artists[artistIndex]);
+
+function setGradient() {
+	musicContainer.style.background = "linear-gradient(to bottom," + color1[firstColorIndex] + "," + color2[secondColorIndex] + ")";
+	CSS.textContent = musicContainer.style.background;
+}
+
 
 // Update song details
 function loadSong(song) {
@@ -41,7 +54,7 @@ function playSong() {
   musicContainer.classList.add('play');
   playBtn.querySelector('i.fas').classList.remove('fa-play');
   playBtn.querySelector('i.fas').classList.add('fa-pause');
-
+  setGradient();
   audio.play();
 }
 
@@ -50,7 +63,7 @@ function pauseSong() {
   musicContainer.classList.remove('play');
   playBtn.querySelector('i.fas').classList.add('fa-play');
   playBtn.querySelector('i.fas').classList.remove('fa-pause');
-
+  setGradient();
   audio.pause();
 }
 
@@ -58,10 +71,14 @@ function pauseSong() {
 function prevSong() {
   songIndex--;
   artistIndex--;
+  firstColorIndex--;
+  secondColorIndex--;
 
   if (songIndex < 0) {
     songIndex = songs.length - 1;
     artistIndex = artists.length -1;
+	firstColorIndex = color1.length - 1;
+	secondColorIndex = color2.length - 1;
   }
 
   loadSong(songs[songIndex]);
@@ -74,10 +91,14 @@ function prevSong() {
 function nextSong() {
   songIndex++;
   artistIndex++;
+  firstColorIndex++;
+  secondColorIndex++;
 
   if (songIndex > songs.length - 1) {
     songIndex = 0;
     artistIndex = 0;
+	firstColorIndex = 0;
+	secondColorIndex = 0;
   }
 
   loadSong(songs[songIndex]);
